@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+
+<button>click</button>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  var btn = document.getElementsByTagName("button")[0];
+  btn.addEventListener("click", (e) => {
+    socket.emit("msg", "hello");
+  });
+
+
+  socket.on("msg", function(msg){
+    console.log(msg);
+  });
+
+  socket.on("online", function(online){
+    console.log("There are " + online + " Online...");
+  });
+
+  socket.on("offline", function(online){
+    console.log("There are " + online + " Online...");
+  });
+
+</script>
+
+  </body>
+</html>
